@@ -27,7 +27,7 @@ function getPagesName(filePath, originPath = filePath, nameList = []) {
 }
 // 获取pages下所有页面的name ['index', 'p7/page1' ...]
 const pagesNameList = getPagesName('src/pages')
-
+console.log(process.env.NODE_ENV);
 // 根据页面名称生成入口
 function getEntry() {
   const entryObj = {}
@@ -65,9 +65,7 @@ let plugins = [
     // chunkFilename: '[id].css',
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.DefinePlugin({
-    PRODUCTION: JSON.stringify(true)
-  })
+  new webpack.EnvironmentPlugin()
   // new copyWebpackPlugin([
   //   { from: 'src/assets/img', to: 'public/img'}
   // ])  

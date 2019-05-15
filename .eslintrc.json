@@ -54,7 +54,7 @@
         "valid-typeof": 2
     },
     "globals": {
-      "PRODUCTION": false
+      "BASE_URL": false
     },
     "env": {
       "es6": true,

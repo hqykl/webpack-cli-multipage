@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "haha company web",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "webpack --config webpack.config.js --hot"
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server",
+    "test": "echo \"Error: no test specified, please npm run dev\" && exit 1",
+    "pre": "cross-env NODE_ENV=pre webpack --mode production",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "main": "index.js",
   "author": "heq",
@@ -19,6 +21,7 @@
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.0.3",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
@@ -36,7 +39,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
