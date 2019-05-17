@@ -27,12 +27,15 @@ function getPagesName(filePath, originPath = filePath, nameList = []) {
 }
 // 获取pages下所有页面的name ['index', 'p7/page1' ...]
 const pagesNameList = getPagesName('src/pages')
-console.log(process.env.NODE_ENV);
 // 根据页面名称生成入口
 function getEntry() {
   const entryObj = {}
+  let filePath = ''
   pagesNameList.forEach(value => {
-    entryObj[value] = `./src/assets/js/${value}.js`
+    filePath = path.resolve(__dirname, `src/assets/js/${value}.js`)
+    if (fs.existsSync(filePath)) {
+      entryObj[value] = filePath
+    }
   })
   return  entryObj
 }
