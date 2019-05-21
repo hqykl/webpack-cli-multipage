@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "haha company web",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server",
-    "test": "echo \"Error: no test specified, please npm run dev\" && exit 1",
+    "local": "cross-env NODE_ENV=local webpack-dev-server",
+    "start": "npm run local",
+    "test": "cross-env NODE_ENV=test webpack --mode production",
     "pre": "cross-env NODE_ENV=pre webpack --mode production",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
