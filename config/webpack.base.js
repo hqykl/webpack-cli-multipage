@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const cssExtract = require('mini-css-extract-plugin')
 const env = process.env.NODE_ENV
 
 // 递归获取所有入口名称
@@ -74,6 +75,30 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: cssExtract.loader,
+            options: {
+              // publicPath: '../../'
+            }
+          },
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: cssExtract.loader,
+            options: {
+              // publicPath: '../../'
+            }
+          },
+          'css-loader', 'postcss-loader', 'sass-loader'
+        ]
+      },
       {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
