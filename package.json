@@ -7,7 +7,7 @@
     "start": "npm run local",
     "test": "cross-env NODE_ENV=test webpack --mode production",
     "pre": "cross-env NODE_ENV=pre webpack --mode production",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+    "production": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "main": "index.js",
   "author": "heq",

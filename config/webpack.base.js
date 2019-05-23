@@ -3,6 +3,7 @@ const fs = require('fs')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const cssExtract = require('mini-css-extract-plugin')
+const envConfig = require('./env.config')
 const env = process.env.NODE_ENV
 
 // 递归获取所有入口名称
@@ -49,12 +50,23 @@ function getHtmlConfig(name) {
   }
 }
 
+// 生成全局变量
+function getEnvConfig() {
+  const obj = envConfig[env]
+  const result = {}
+  for(let key in obj) {
+    result[key] = JSON.stringify(obj[key])
+  }
+  return result
+}
+
 // plugins配置项
 let plugins = [
   // 自动全局加载模块，不用到处引入
   new webpack.ProvidePlugin({
     $: 'jquery',
-    jQuery: 'jquery'
+    jQuery: 'jquery',
+    ...getEnvConfig()
   }),
   new webpack.EnvironmentPlugin()
 ];
