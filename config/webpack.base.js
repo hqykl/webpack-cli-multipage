@@ -55,7 +55,7 @@ function getEnvConfig() {
   const obj = envConfig[env]
   const result = {}
   for(let key in obj) {
-    result[key] = JSON.stringify(obj[key])
+    result[`process.env.${key}`] = JSON.stringify(obj[key])
   }
   return result
 }
@@ -66,8 +66,9 @@ let plugins = [
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    ...getEnvConfig()
   }),
+  // 加载全局变量
+  new webpack.DefinePlugin(getEnvConfig()),
   new webpack.EnvironmentPlugin()
 ];
 

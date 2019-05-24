@@ -4,6 +4,6 @@ const a = 1;
 console.log(a);
 console.log($);
 console.log(process.env.NODE_ENV);
-console.log(SSO_URL);
+console.log(process.env.SSO_URL);
 // var image = new Image()
 // image.src = '../img/4.jpg'
