@@ -3,7 +3,7 @@
 #### 项目启动  `npm run local`  
 
 ### 项目介绍:
-+ 项目配置了 **local**(本地开发环境)、**test**(测试环境打包)、**pre**(预览环境打包)、**production**(开发环境打包)四种环境变量，通过 ` npm run local | test | pre | production `打包对应环境。
++ 项目配置了 **local**(本地开发环境)、**test**(测试环境打包)、**pre**(预览环境打包)、**production**(生产环境打包)四种环境变量，通过 ` npm run local | test | pre | production `打包对应环境。
   
     ├──/src/pages  html文件  
     ├──/src/assets/scss  样式文件  
@@ -55,11 +55,7 @@
 │   │   │   ├── pui_Montserrat-Bold.eot  
 │   │   │   ├── pui_Montserrat-Bold.svg  
 │   │   │   ├── pui_Montserrat-Bold.ttf  
-│   │   │   ├── pui_Montserrat-Bold.woff  
-│   │   │   ├── xp_iconfont.eot  
-│   │   │   ├── xp_iconfont.svg  
-│   │   │   ├── xp_iconfont.ttf  
-│   │   │   └── xp_iconfont.woff  
+│   │   │   ├── pui_Montserrat-Bold.woff   
 │   │   ├── img  &nbsp;&nbsp;&nbsp;&nbsp;  图片目录   
 │   │   │   ├── 4.jpg        
 │   │   │   └── p7      
