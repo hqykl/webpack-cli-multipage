@@ -1,10 +1,34 @@
-## 基于weback4构建的多页面应用脚手架
-### 项目目录如下
+## 基于weback4构建的多页面应用脚手架  
+
+#### 项目启动  `npm run local`  
+
+### 项目介绍:
++ 项目配置了 **local**(本地开发环境)、**test**(测试环境打包)、**pre**(预览环境打包)、**production**(开发环境打包)四种环境变量，通过 ` npm run local | test | pre | production `打包对应环境。
+  
+    ├──/src/pages  html文件  
+    ├──/src/assets/scss  样式文件  
+    ├──/src/assets/scss  js文件  
+    - 需注意，如果需要划分多级目录，最好保持多级目录在以上三个目录下保持一致(例如目前示例中划分的P7文件目录)
+
++ **local**(开发环境)启动devServer，开发环境配置了热更替及js的sourceMap功能，方便开发。
+
++ 打包生成目录为dist。全局变量定义在 */config/env.config.js* ,可根据项目实际情况自行定义全局变量，例如接口地址等。
+
++ 已经全局注入了jQuery，正常使用即可。
+  
++ 配置了sass及postcss,postscss只引用了autoprefixer，可自行配置其他插件。
+
++ 简单配置了eslint
+
++ 抽出了页面公共部分，可按照 */src/layout/header.html* 格式自行定义其他页面公共部分，并按照
+*/src/pages/index.html* 内引入header的方式引入自定义部分。
+
+### 项目目录如下:
 
 .  
 ├── README.md   
 ├── config  &nbsp;&nbsp;&nbsp;&nbsp;配置目录  
-│   ├── env.config.js &nbsp;&nbsp;&nbsp;&nbsp;环境变量配置    
+│   ├── env.config.js &nbsp;&nbsp;&nbsp;&nbsp;全局变量配置    
 │   ├── webpack.base.js &nbsp;&nbsp;&nbsp;&nbsp;webpack基础配置   
 │   ├── webpack.build.js &nbsp;&nbsp;&nbsp;&nbsp;webpack本地开发配置   
 │   └── webpack.local.js &nbsp;&nbsp;&nbsp;&nbsp;webpack打包配置  
@@ -59,7 +83,9 @@
 │   │   ├── header.html  
 │   │   └── meta.html  
 │   └── pages  &nbsp;&nbsp;&nbsp;&nbsp;  html目录   
-│       ├── index.html   
-│       └── p7  
+│       ├── index.html    
+│       └── p7   
 │           └── page1.html  
 ├── webpack.config.js
+
+
