@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 class AddPages {
   constructor() {
+    this.filename = ''
     this.filepath = {
       cssPath: path.resolve(__dirname, 'src/assets/scss'),
       jsPath: path.resolve(__dirname, 'src/assets/js'),
@@ -16,17 +17,18 @@ class AddPages {
       global.console.log(chalk.red('请输入页面名称'))
       return false
     } 
-    const filePathList = []
+    let filePathList = []
     argv.forEach((value, index) => {
       const files = this.isExistFile(value)
       if (index > 1 && files) {
-        filePathList.push(files)
+        filePathList = files
       }
     })
     return filePathList
   }
 
   isExistFile(filename) {
+    this.filename = filename
     let isExist = false
     const htmlPath = this.filepath.htmlPath + '/' + filename + '.html'
     if (fs.existsSync(htmlPath)) {
@@ -57,7 +59,19 @@ class AddPages {
     if (!pathList) return false
     fs.readFile('./tpl/html.tpl', 'utf-8', (err, data) => {
       if (err) throw err
-      console.log(data);
+      fs.writeFile(pathList[0], data, 'utf-8', () => {
+      })
+    })
+    fs.readFile('./tpl/js.tpl', 'utf-8', (err, data) => {
+      if (err) throw err
+      const str = `require('../scss/${this.filename}.scss')${data}`
+      fs.writeFile(pathList[1], str, 'utf-8', () => {
+      })
+    })
+    fs.readFile('./tpl/scss.tpl', 'utf-8', (err, data) => {
+      if (err) throw err
+      fs.writeFile(pathList[2], data, 'utf-8', () => {
+      })
     })
   }
 }
